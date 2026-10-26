@@ -52,10 +52,7 @@ const TSet& TSet::operator=(const TSet &s)// присваивание
 
 int TSet::operator==(const TSet &s) const // сравнение 
 {
-    if (BitField == s.BitField) {
-        return 1;
-    }
-    return 0;
+    return (BitField == s.BitField);
 }
 
 int TSet::operator!=(const TSet &s) const // сравнение 
@@ -88,9 +85,7 @@ TSet TSet::operator*(const TSet &s) // пересечение
 
 TSet TSet::operator~(void) // дополнение а тут что?
 {
-    TSet tmp(*this);
-    tmp.BitField = ~tmp.BitField;
-    return tmp;
+    return TSet(~BitField);
 }
 
 // перегрузка ввода/вывода

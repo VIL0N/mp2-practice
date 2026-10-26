@@ -12,11 +12,11 @@ TBitField::TBitField(int len) {
         throw exception("BitLen<=0");
     }
     BitLen = len;
-    MemLen = (len+31) / NTmp;
+    MemLen = (len+31) / NTmp; //todo
     pMem = new TELEM[MemLen];
     for (int i = 0; i < MemLen; i++) {
         pMem[i] = 0;
-    };
+    }
 }
 
 TBitField::TBitField(const TBitField &bf) // конструктор копирования
@@ -113,10 +113,10 @@ TBitField TBitField::operator|(const TBitField &bf) // операция "или"
     int maxk = max(BitLen, bf.BitLen);
     int mink = min(MemLen, bf.MemLen);
     TBitField t(maxk);
-    for (int i = 0; i < mink; i++) {
+    int i;
+    for (i = 0; i < mink; i++) {
         t.pMem[i] = pMem[i] | bf.pMem[i];
     }
-    int i = mink;
     while (i < MemLen) {
         t.pMem[i] = pMem[i];
         i++;
@@ -136,15 +136,6 @@ TBitField TBitField::operator&(const TBitField &bf) // операция "и"
     TBitField t(maxk);
     for (int i = 0; i < mink; i++) {
         t.pMem[i] = pMem[i] & bf.pMem[i];
-    }
-    int i = mink;
-    while (i < MemLen) {
-        t.pMem[i] = 0;
-        i++;
-    }
-    while (i < bf.MemLen) {
-        t.pMem[i] = 0;
-        i++;
     }
     return t;
 }
