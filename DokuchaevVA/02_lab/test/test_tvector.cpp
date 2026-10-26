@@ -19,16 +19,14 @@ TEST(TDynamicVector, throws_when_create_vector_with_negative_length)
 
 TEST(TDynamicVector, can_create_copied_vector)
 {
-	TDynamicVector<int> v(10);
-	ASSERT_NO_THROW(TDynamicVector<int> v1(v));
+  TDynamicVector<int> v(10);
+
+  ASSERT_NO_THROW(TDynamicVector<int> v1(v));
 }
 
 TEST(TDynamicVector, copied_vector_is_equal_to_source_one)
 {
-	TDynamicVector<int> v(10);
-	for (int i = 0; i < 10; i++) v[i] = i;
-	TDynamicVector<int> v1(v);
-	EXPECT_EQ(v1, v);
+  ADD_FAILURE();
 }
 
 TEST(TDynamicVector, copied_vector_has_its_own_memory)
